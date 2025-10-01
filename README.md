@@ -41,7 +41,7 @@ A **Retrieval-Augmented Generation (RAG)** chatbot (conversational AI) that answ
 
 - Python  
 - **OpenAI API (GPT-4)**  
-- **Gradio** for interactive UI  
+- **Gradio/Streamlit** for interactive UI deployment
 - **FAISS** for fast similarity search  
 - **Hugging Face SentenceTransformers** for embeddings  
 
@@ -51,7 +51,7 @@ A **Retrieval-Augmented Generation (RAG)** chatbot (conversational AI) that answ
 
 You can interact with the chatbot using one of the following options:
 
-### Option 1: Chat with the chatbot online
+### Option 1: Chat with the deployed chatbot online
 👉[Launch the chatbot](https://ragllm20251001.streamlit.app/)
 
 ### Option 2: Run in Google Colab (no setup required)
@@ -89,6 +89,6 @@ os.environ["OPENAI_API_KEY"] = "your-api-key-here"
 - Multi-turn conversation management  
 - RAG architecture design to reduce hallucinations (will return "I don't know" instead)
 - Embedding-based semantic search  
-- Building interactive applications with Gradio  
+- Building and deploying interactive applications with Gradio/Streamlit
 - Integration of OpenAI GPT-4 API  
 - Modular and extensible Python code  
