@@ -1,0 +1,57 @@
+========================================
+Multi-Turn RAG Chatbot Demo
+Example Chat & Retrieval Debugging
+========================================
+
+Query: what was the destination of Apollo 11
+Answer: The destination of Apollo 11 was the Moon.
+
+Retrieved Chunks (with L2 distance scores):
+----------------------------------------------------------------
+[space_missions.txt] Score: 0.9664 | The Apollo 11 mission launched on July 16, 1969, and landed the first humans on the Moon on July 20, 1969.
+[space_missions.txt] Score: 0.9207 | The mission lasted 8 days, 3 hours, 18 minutes, and 35 seconds. There was no fourth crew member on Apollo 11.
+[space_missions.txt] Score: 1.2089 | The crew consisted of exactly three astronauts: Neil Armstrong (Commander), Buzz Aldrin (Lunar Module Pilot),
+[space_missions.txt] Score: 1.2443 | and Michael Collins (Command Module Pilot). Neil Armstrong was the first person to walk on the Moon,
+[space_missions.txt] Score: 1.3155 | followed by Buzz Aldrin. Michael Collins remained in lunar orbit aboard the command module Columbia.
+
+========================================
+
+Query: who was on it
+Answer: The Apollo 11 crew consisted of Neil Armstrong, Buzz Aldrin, and Michael Collins.
+
+Retrieved Chunks (with L2 distance scores):
+----------------------------------------------------------------
+[space_missions.txt] Score: 0.9569 | The Apollo 11 mission launched on July 16, 1969, and landed the first humans on the Moon on July 20, 1969.
+[space_missions.txt] Score: 0.9727 | The mission lasted 8 days, 3 hours, 18 minutes, and 35 seconds. There was no fourth crew member on Apollo 11.
+[space_missions.txt] Score: 1.0035 | and Michael Collins (Command Module Pilot). Neil Armstrong was the first person to walk on the Moon,
+[space_missions.txt] Score: 1.0515 | The crew consisted of exactly three astronauts: Neil Armstrong (Commander), Buzz Aldrin (Lunar Module Pilot),
+[space_missions.txt] Score: 1.0759 | followed by Buzz Aldrin. Michael Collins remained in lunar orbit aboard the command module Columbia.
+
+========================================
+
+Query: who was the 4th individual?
+Answer: There was no fourth crew member on Apollo 11.
+
+Retrieved Chunks (with L2 distance scores):
+----------------------------------------------------------------
+[space_missions.txt] Score: 0.8299 | The mission lasted 8 days, 3 hours, 18 minutes, and 35 seconds. There was no fourth crew member on Apollo 11.
+[space_missions.txt] Score: 0.6180 | The crew consisted of exactly three astronauts: Neil Armstrong (Commander), Buzz Aldrin (Lunar Module Pilot),
+[space_missions.txt] Score: 0.7574 | followed by Buzz Aldrin. Michael Collins remained in lunar orbit aboard the command module Columbia.
+[space_missions.txt] Score: 0.7977 | and Michael Collins (Command Module Pilot). Neil Armstrong was the first person to walk on the Moon,
+[space_missions.txt] Score: 1.0576 | The Apollo 11 mission launched on July 16, 1969, and landed the first humans on the Moon on July 20, 1969.
+
+========================================
+
+Query: what's Atlantis?
+Answer: I don't know.
+
+Retrieved Chunks (with L2 distance scores):
+----------------------------------------------------------------
+[space_missions.txt] Score: 0.7186 | The crew consisted of exactly three astronauts: Neil Armstrong (Commander), Buzz Aldrin (Lunar Module Pilot),
+[space_missions.txt] Score: 0.8297 | The mission lasted 8 days, 3 hours, 18 minutes, and 35 seconds. There was no fourth crew member on Apollo 11.
+[space_missions.txt] Score: 0.9837 | followed by Buzz Aldrin. Michael Collins remained in lunar orbit aboard the command module Columbia.
+[space_missions.txt] Score: 1.0090 | and Michael Collins (Command Module Pilot). Neil Armstrong was the first person to walk on the Moon,
+[space_missions.txt] Score: 1.1443 | The Apollo 11 mission launched on July 16, 1969, and landed the first humans on the Moon on July 20, 1969.
+
+Note: The retrieved chunks in this example are all from the space topic because the retriever 
+incorporates previous chat history when forming the query. This means the retrieval is influenced by prior questions and answers, not just the current query.
