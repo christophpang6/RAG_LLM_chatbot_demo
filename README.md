@@ -2,7 +2,8 @@
 
 A **Retrieval-Augmented Generation (RAG)** chatbot (conversational AI) that answers questions based on a curated set of documents. Combines **FAISS semantic search**, **SentenceTransformer embeddings**, and **OpenAI GPT-4** to provide context-aware responses for multi-turn conversations.
 
-![Multi-Turn RAG Demo](multi-turn_RAG_demo.png)
+![Multi-Turn RAG Demo with gradio chat UI](multi-turn_RAG_demo.png)
+![Multi-Turn RAG Demo with Streamlit chat UI](rag_llm_streamlit.png)
 
 
 ---
@@ -48,12 +49,15 @@ A **Retrieval-Augmented Generation (RAG)** chatbot (conversational AI) that answ
 
 ## Quick Start
 
-You can try the notebook using one of the following options:
+You can interact with the chatbot using one of the following options:
 
-**Option 1: Run in Google Colab (no setup required)**  
-👉 [Open in Google Colab](https://colab.research.google.com/drive/1aetVpiI01FlGcQmJQE32crX949Ft0qi0?usp=sharing)
+### Option 1: Chat with the chatbot online
+👉[Launch the chatbot](https://ragllm20251001.streamlit.app/)
 
-**Option 2: Run locally from this repository**  
+### Option 2: Run in Google Colab (no setup required)
+[Open in Google Colab](https://colab.research.google.com/drive/1aetVpiI01FlGcQmJQE32crX949Ft0qi0?usp=sharing)
+
+### Option 3: Run locally from this repository
 1. Clone the repository:
 
 ```bash
