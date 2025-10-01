@@ -57,8 +57,8 @@ You can try the notebook using one of the following options:
 1. Clone the repository:
 
 ```bash
-git clone <your-repo-url>
-cd <repo-folder>
+git clone https://github.com/christophpang6/RAG_LLM_chatbot_demo
+cd RAG_LLM_chatbot_demo
 ```
 
 2. Ensure dependencies are installed:
