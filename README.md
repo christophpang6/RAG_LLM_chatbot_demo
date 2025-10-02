@@ -5,6 +5,37 @@ A **Retrieval-Augmented Generation (RAG)** chatbot (conversational AI) that answ
 ![Multi-Turn RAG Demo with gradio chat UI](multi-turn_RAG_demo.png)
 ![Multi-Turn RAG Demo with Streamlit chat UI](rag_llm_streamlit.png)
 
+## Quick Start
+
+You can interact with the chatbot using one of the following options:
+
+### Option 1: Chat with the deployed chatbot online
+👉[Launch the chatbot](https://cp-rag-llm.streamlit.app/)
+
+### Option 2: Run in Google Colab (no setup required)
+[Open in Google Colab](https://colab.research.google.com/drive/1aetVpiI01FlGcQmJQE32crX949Ft0qi0?usp=sharing)
+
+### Option 3: Run locally from this repository
+1. Clone the repository:
+
+```bash
+git clone https://github.com/christophpang6/RAG_LLM_chatbot_demo
+cd RAG_LLM_chatbot_demo
+```
+
+2. Ensure dependencies are installed:
+
+```python
+!pip install -q sentence-transformers faiss-cpu torch datasets evaluate rouge-score openai gradio
+```
+3. Set your OpenAI API key:
+
+```python
+import os
+os.environ["OPENAI_API_KEY"] = "your-api-key-here"
+```
+
+
 
 ---
 
@@ -37,6 +68,9 @@ A **Retrieval-Augmented Generation (RAG)** chatbot (conversational AI) that answ
 
 ---
 
+![architecture](architecture.png)
+
+
 ## Tech Stack
 
 - Python  
@@ -47,35 +81,6 @@ A **Retrieval-Augmented Generation (RAG)** chatbot (conversational AI) that answ
 
 ---
 
-## Quick Start
-
-You can interact with the chatbot using one of the following options:
-
-### Option 1: Chat with the deployed chatbot online
-👉[Launch the chatbot](https://cp-rag-llm.streamlit.app/)
-
-### Option 2: Run in Google Colab (no setup required)
-[Open in Google Colab](https://colab.research.google.com/drive/1aetVpiI01FlGcQmJQE32crX949Ft0qi0?usp=sharing)
-
-### Option 3: Run locally from this repository
-1. Clone the repository:
-
-```bash
-git clone https://github.com/christophpang6/RAG_LLM_chatbot_demo
-cd RAG_LLM_chatbot_demo
-```
-
-2. Ensure dependencies are installed:
-
-```python
-!pip install -q sentence-transformers faiss-cpu torch datasets evaluate rouge-score openai gradio
-```
-3. Set your OpenAI API key:
-
-```python
-import os
-os.environ["OPENAI_API_KEY"] = "your-api-key-here"
-```
 
 ## Extending the Knowledge Base
 
