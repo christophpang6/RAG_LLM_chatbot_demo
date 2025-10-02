@@ -1,8 +1,10 @@
 # Multi-Turn RAG Chatbot
 
 A **Retrieval-Augmented Generation (RAG)** chatbot (conversational AI) that answers questions based on a curated set of documents. Combines **FAISS semantic search**, **SentenceTransformer embeddings**, and **OpenAI GPT-4** to provide context-aware responses for multi-turn conversations.
-
+## Gradio chat UI
 ![Multi-Turn RAG Demo with gradio chat UI](multi-turn_RAG_demo.png)
+
+## Streamlit chat UI
 ![Multi-Turn RAG Demo with Streamlit chat UI](rag_llm_streamlit.png)
 
 ## Quick Start
