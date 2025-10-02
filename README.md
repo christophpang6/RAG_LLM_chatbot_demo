@@ -5,7 +5,7 @@ A **Retrieval-Augmented Generation (RAG)** chatbot (conversational AI) that answ
 ![Multi-Turn RAG Demo with gradio chat UI](multi-turn_RAG_demo.png)
 
 ## Streamlit chat UI
-![Multi-Turn RAG Demo with Streamlit chat UI](rag_llm_streamlit.png)
+<img src="rag_llm_streamlit.png" alt="Multi-Turn RAG Demo with Streamlit chat UI" width="400"/>
 
 ## Quick Start
 
