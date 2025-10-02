@@ -56,10 +56,10 @@ os.environ["OPENAI_API_KEY"] = "your-api-key-here"
   - Uses **SentenceTransformer (`all-MiniLM-L6-v2`)** for high-quality text embeddings.  
   - Supports diverse topics: space missions, programming, science, history, architecture.  
 
-- **Interactive Gradio Interface**  
-  - User-friendly chat interface with adjustable chatbox height.  
+- **Interactive Gradio/Streamlit Interface**  
+  - User-friendly chat interface.  
   - Preloaded example queries for quick testing.  
-  - Supports sharing via Gradio links.  
+  - Supports sharing via Gradio links or Streamlit links.  
 
 - **Extensible & Modular**  
   - Easy to add new documents to the knowledge base.  
