@@ -52,7 +52,7 @@ A **Retrieval-Augmented Generation (RAG)** chatbot (conversational AI) that answ
 You can interact with the chatbot using one of the following options:
 
 ### Option 1: Chat with the deployed chatbot online
-👉[Launch the chatbot](https://ragllm20251001.streamlit.app/)
+👉[Launch the chatbot](https://cp-rag-llm.streamlit.app/)
 
 ### Option 2: Run in Google Colab (no setup required)
 [Open in Google Colab](https://colab.research.google.com/drive/1aetVpiI01FlGcQmJQE32crX949Ft0qi0?usp=sharing)
