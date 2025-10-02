@@ -60,15 +60,45 @@ SYSTEM_MESSAGE = (
 # ======== Streamlit UI Config ========
 st.set_page_config(page_title="RAG Chatbot", page_icon="🤖", layout="centered")
 st.title("🤖 Multi-Turn RAG Chatbot Demo")
-st.markdown("Ask questions about **space missions, landmarks, programming, science, or historical events.**")
+
+st.markdown("Creator: **Christopher Pang**  🔗 [LinkedIn](https://www.linkedin.com/in/christopherpang)")
+
+st.markdown(
+    "This demo shows a Retrieval-Augmented Generation chatbot that pulls from X documents and uses embeddings + LLM to answer domain-specific questions.<br>"
+    "Ask questions about **space missions, landmarks, programming, science, or historical events.**<br>"
+    "If a question is asked that is not in the retrieval vector database, the chatbot will respond with: **\"I don't know.\"**",
+    unsafe_allow_html=True
+)
+
+# making it very simple for someone to start to interact
+st.markdown("### Try clicking on one of these:")
+
+col1, col2, col3 = st.columns(3)
+with col1:
+    if st.button("🚀 Apollo 11 crew"):
+        st.session_state["trigger_chat"] = "Who were the crew members of Apollo 11?"
+
+with col2:
+    if st.button("🗼 Eiffel Tower year"):
+        st.session_state["trigger_chat"] = "When was the Eiffel Tower built?"
+
+with col3:
+    if st.button("💻 Python origin"):
+        st.session_state["trigger_chat"] = "Who created Python and when was it released?"
+
 
 # Hugging Face token input
 hf_token = HF_API_KEY
 
 # Slider controls (like in Gradio)
-max_tokens = st.slider("Max new tokens", min_value=1, max_value=2048, value=512, step=1)
-temperature = st.slider("Temperature", min_value=0.0, max_value=4.0, value=0.0, step=0.1)
-top_p = st.slider("Top-p (nucleus sampling)", min_value=0.1, max_value=1.0, value=0.95, step=0.05)
+# max_tokens = st.slider("Max new tokens", min_value=1, max_value=2048, value=512, step=1)
+# temperature = st.slider("Temperature", min_value=0.0, max_value=2.0, value=0.0, step=0.1)
+# top_p = st.slider("Top-p (nucleus sampling)", min_value=0.1, max_value=1.0, value=0.95, step=0.05)
+
+# set these so it is simpler for someone to use
+max_tokens = 512
+temperature = 0.0
+top_p = 0.95
 
 # Initialize chat history in Streamlit session state
 if "chat_history" not in st.session_state:
@@ -84,7 +114,16 @@ def rag_respond(message, hf_token, history, system_message, max_tokens, temperat
         history_text += f"Previous Q: {q}\nPrevious A: {a}\n"
 
     # FAISS retrieval
-    retrieval_query = " ".join([f"{q} {a}" for q, a in history[-3:]] + [message])
+    # known issue:
+    # history[-3:] was used for multi turn follow up questions such as: where did apollo 11 go to?, then 
+    # who went there? chat_history feed into retrieval_query is necessary to be able to have this
+    # multi turn follow up questions functionality. 
+    # however when switching topics, will have irrelevant retrieval chunks from previous topic relative
+    # to the new topic and the LLM will then say I don't know.
+    # can instead use history[-1:] to use less of the past chat_history while maintaining
+    # history[-1:] still has topic switching causing i don't know output. however, it takes one
+    # i don't know before topic is successfully switched while still enabling multi turn followup questions
+    retrieval_query = " ".join([f"{q} {a}" for q, a in history[-1:]] + [message])
     q_emb = embedder.encode([retrieval_query], convert_to_numpy=True)
     D, I = index.search(q_emb, k=5)
     retrieved_chunks = [(corpus[i], sources[i], D[0][j]) for j, i in enumerate(I[0])]
@@ -112,7 +151,13 @@ for q, a in st.session_state.chat_history:
     with st.chat_message("assistant"):
         st.write(a)
 
-if prompt := st.chat_input("Ask me something..."):
+# Always show chat input
+user_input = st.chat_input("Ask me something...")
+
+# Determine prompt: button click or typed input
+prompt = st.session_state.pop("trigger_chat", None) or user_input
+
+if prompt:
     if not hf_token:
         st.warning("Please enter your HuggingFace token above first.")
     else:
